@@ -1,0 +1,6 @@
+These files include recent examples of python code used at work.
+
+In general each API connection process is similar but differences exist in the particulars and in the data cleaning/manipulation aftwerwards.  
+
+In most of these examples the data formatting and exporting step was done in a particular way for use in a tableau dashboard.
+
