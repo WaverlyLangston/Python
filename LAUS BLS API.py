@@ -1,9 +1,5 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jul 14 09:06:52 2023
+#Import labor force data from BLS LAUS API, claen and prepare for use in tableau visualization, export, update google sheet
 
-@author: wlangston
-"""
 import pandas as pd
 import requests
 import json
@@ -15,7 +11,9 @@ headers = {'Content-type' : 'application/json'}
 seriesid = ['LNS11300000', 'LNS12300000', 'LNS14000000', 'LASST090000000000003', 'LASST090000000000004', 'LASST090000000000005', 'LASST090000000000006', 'LASST090000000000007', 'LASST090000000000008']
 start_year = '2016'
 end_year = '2023'
-bls_api = 'e4079648c4934efda43df6f591b08c5e'
+
+#BLS API key removed for public upload.  Keys can be acquired for free from BLS website.
+bls_api = ''
 series_dict = {'LNS11300000' : 'U.S. Labor Force Participation Rate',
                'LNS12300000' : 'U.S. Employment-Population Ratio',
                'LNS14000000' : 'U.S. Unemployment Rate',
@@ -66,7 +64,9 @@ pivoted_df['U.S. Employment-Population Ratio'] = pivoted_df['U.S. Employment-Pop
 
 pivoted_df.to_csv('LAUS.csv')
 
-#sheets_api_key = '57df72284b2e6a72162ca8a4f78a8a161f22243a'
+#Google sheets api key removed for public upload
+#sheets_api_key = ''
+
 #Reads json file approving access to google drive, edit file location for sharing
 gc = gspread.service_account(filename='dashboard_data_google_drive_access_info.json')
 
@@ -77,27 +77,6 @@ with open('LAUS.csv', 'r', encoding = 'UTF-8') as file_obj:
     gc.import_csv(spreadsheet1.id, data=content)
 
 #Share spreadsheet so that the main email has access, not just editing client/API
-spreadsheet1.share('advancecteconomicdashboard@gmail.com', perm_type = 'user', role = 'writer')
 
-
-
-# ##THIS IS A METHOD OF UPDATING THE A TAB IN THE SPREADSHEET CALLED SHEET1##
-# ##TABLEAU REJECTS DATA CONNECTIONS EASILY AND DOES NOT LIKE TO REPLACE##
-# ##IF A SHEET NAME OTHER THAN LAUS BECOMES NECESSARY THIS ALLOWS FOR THAT##
-
-# #sheets_api_key = '57df72284b2e6a72162ca8a4f78a8a161f22243a'
-# #Reads json file approving access to google drive, edit file location for sharing
-# gc = gspread.service_account(filename='dashboard_data_google_drive_access_info.json')
-
-# spreadsheet1 = gc.open('LAUS')
-# spreadsheet1.values_update('Sheet1',
-#                             params = {'valueInputOption' : 'USER_ENTERED'},
-#                             body = {'values' : list(csv.reader(open('LAUS.csv')))}
-#                             )
-
-# #Share spreadsheet so that the main email has access, not just editing client/API
-# spreadsheet1.share('advancecteconomicdashboard@gmail.com', perm_type = 'user', role = 'writer')
-
-
-
-
+#Email hidden for public upload
+spreadsheet1.share('', perm_type = 'user', role = 'writer')
