@@ -1,9 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jul 14 09:06:52 2023
+#Import several JOLTS metrics for CT and U.S. from BLS API, clean and prepare for use in tableau dashboard, export, and update google sheet 
 
-@author: wlangston
-"""
+
 import pandas as pd
 import requests
 import json
@@ -21,7 +18,9 @@ seriesid = ['JTS000000090000000HIL', 'JTS000000090000000HIR', 'JTS00000009000000
 
 start_year = '2016'
 end_year = '2023'
-bls_api = 'e4079648c4934efda43df6f591b08c5e'
+
+#BLS API key removed for public upload.  Keys can be acquired for free from website.
+bls_api = ''
 series_dict = {'JTS000000090000000HIL' : 'CT Hires Level',
                'JTS000000090000000HIR' : 'CT Hires Rate',
                'JTS000000090000000JOL' : 'CT Job Openings Level',
@@ -97,7 +96,9 @@ pivoted_df['CT Total Separations Level'] = pivoted_df['CT Total Separations Leve
 
 pivoted_df.to_csv('JOLTS.csv')
 
-#sheets_api_key = '57df72284b2e6a72162ca8a4f78a8a161f22243a'
+#Google sheets api removed from public upload
+#sheets_api_key = ''
+
 #Reads json file approving access to google drive, edit file location for sharing
 gc = gspread.service_account(filename='dashboard_data_google_drive_access_info.json')
 
@@ -109,4 +110,5 @@ spreadsheet1.values_update('Sheet1',
                            )
 
 #Share spreadsheet so that the main email has access, not just editing client/API
-spreadsheet1.share('advancecteconomicdashboard@gmail.com', perm_type = 'user', role = 'writer')
+#Email hidden for public upload
+spreadsheet1.share('EmailHidden', perm_type = 'user', role = 'writer')
