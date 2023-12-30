@@ -1,9 +1,5 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Jul  6 10:54:04 2023
+# Import several years of population data from census pop estimates for use in per capita calculations of other scripts
 
-@author: wlangston
-"""
 def population():
     import pandas as pd
     import gc
