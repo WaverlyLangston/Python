@@ -1,9 +1,5 @@
-# -*- coding: utf-8 -*-
-'''
-Created on Fri Jul 28 09:41:49 2023
+#Code downloads GDP data through BEA API, manipulates datatable for use in a tableau visualization, exports, and updates a google sheet.
 
-@author: wlangston
-'''
 import requests
 import pandas as pd
 #allows access to google sheets
@@ -12,7 +8,9 @@ import os
 cwd = os.getcwd()
 
 base_url = 'https://apps.bea.gov/api/data/'
-bea_api_key = '9D4C60D7-52EB-46B4-A814-5EDA4E638294'
+
+#API key hidden for public upload.  keys can be acquired for free on BEA website.
+#bea_api_key = ''
 
 # START OF PEER STATE GDP SECTION
 
@@ -55,7 +53,7 @@ peer_gdp['Time'] = pd.to_datetime(peer_gdp['TimePeriod'])
 #Reshape dataframe for tableau and export csv
 peer_gdp = peer_gdp.pivot(index = 'Time', columns = 'GeoName', values = 'DataValue')
 
-# #Calculate 1yr and 5yr %change for index charts
+# #Calculate 1yr and 5yr %change for index charts, sometimes useful for tableau products
 # for col in peer_gdp:
 #     peer_gdp[col] = peer_gdp[col].str.replace(',','').astype(float)
 #     peer_gdp[f'{col}_1yr'] = peer_gdp[col].pct_change(periods = 4)  
@@ -65,7 +63,8 @@ peer_gdp = peer_gdp.pivot(index = 'Time', columns = 'GeoName', values = 'DataVal
 #Export
 peer_gdp.to_csv('peer_gdp.csv')
 
-#sheets_api_key = '57df72284b2e6a72162ca8a4f78a8a161f22243a'
+#Google account API key removed for public upload.  Keys can be acquired from google.
+#sheets_api_key = ''
 #Reads json file approving access to google drive, edit file location for sharing
 gc = gspread.service_account(filename='dashboard_data_google_drive_access_info.json')
 
@@ -76,7 +75,8 @@ with open('peer_gdp.csv', 'r', encoding = 'UTF-8') as file_obj:
     gc.import_csv(spreadsheet1.id, data=content)
 
 #Share spreadsheet so that the main email has access, not just editing client/API
-spreadsheet1.share('advancecteconomicdashboard@gmail.com', perm_type = 'user', role = 'writer')
+#Email hidden for public upload
+spreadsheet1.share('EMAILHIDDEN', perm_type = 'user', role = 'writer')
 
 # END OF PEER STATE GDP SECTION
 
@@ -121,7 +121,8 @@ ct_industry = ct_industry.pivot(index = 'Time', columns = 'Description', values 
 #Export
 ct_industry.to_csv('ct_industry_gdp.csv')
 
-#sheets_api_key = '57df72284b2e6a72162ca8a4f78a8a161f22243a'
+#Google account API key removed for public upload.  Keys can be acquired from google.
+#sheets_api_key = ''
 #Reads json file approving access to google drive, edit file location for sharing
 gc = gspread.service_account(filename='dashboard_data_google_drive_access_info.json')
 
@@ -132,7 +133,8 @@ with open('ct_industry_gdp.csv', 'r', encoding = 'UTF-8') as file_obj:
     gc.import_csv(spreadsheet2.id, data=content)
 
 #Share spreadsheet so that the main email has access, not just editing client/API
-spreadsheet2.share('advancecteconomicdashboard@gmail.com', perm_type = 'user', role = 'writer')
+#Email hidden for public upload
+spreadsheet2.share('EmailHidden', perm_type = 'user', role = 'writer')
 
 
 
@@ -191,7 +193,8 @@ ct_annual['percent_gdp'] = ct_annual['GDP'].div(total_gdp)
 #Export
 ct_annual.to_csv('ct_annual_gdp.csv')
 
-# sheets_api_key = '57df72284b2e6a72162ca8a4f78a8a161f22243a'
+#Google account API key removed for public upload.  Keys can be acquired from google.
+#sheets_api_key = ''
 #Reads json file approving access to google drive, edit file location for sharing
 gc = gspread.service_account(filename='dashboard_data_google_drive_access_info.json')
 
@@ -202,7 +205,8 @@ with open('ct_annual_gdp.csv', 'r', encoding = 'UTF-8') as file_obj:
     gc.import_csv(spreadsheet3.id, data=content)
 
 #Share spreadsheet so that the main email has access, not just editing client/API
-spreadsheet3.share('advancecteconomicdashboard@gmail.com', perm_type = 'user', role = 'writer')
+#Email hidden for public upload
+spreadsheet3.share('EmailHiden', perm_type = 'user', role = 'writer')
 
 #END OF ANNUAL CT GDP BY INDUSTRY SECTION
 
