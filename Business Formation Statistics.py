@@ -1,9 +1,5 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Jun 20 15:51:17 2023
+#Download business formation statistics from census, clean and maniuplate for use in a tableau visualization, export and update a google sheet
 
-@author: wlangston
-"""
 import pandas as pd
 import plotly.io as pio
 pio.renderers.default='browser'
@@ -76,7 +72,8 @@ tableau_data.to_csv('business_formation_statistics.csv')
 
 
 # #this is the old way of updating google drive, sheet name changes#
-# #sheets_api_key = '57df72284b2e6a72162ca8a4f78a8a161f22243a'
+# #Google sheets api removed for public upload
+# #sheets_api_key = ''
 # #Reads json file approving access to google drive, edit file location for sharing
 # gc = gspread.service_account(filename='dashboard_data_google_drive_access_info.json')
 
@@ -87,16 +84,17 @@ tableau_data.to_csv('business_formation_statistics.csv')
 #     gc.import_csv(spreadsheet1.id, data=content)
 
 # #Share spreadsheet so that the main email has access, not just editing client/API
-# spreadsheet1.share('advancecteconomicdashboard@gmail.com', perm_type = 'user', role = 'writer')
-
-
+# #Email hidden for public upload
+# spreadsheet1.share('EmailHidden', perm_type = 'user', role = 'writer')
 
 
 ##THIS IS A METHOD OF UPDATING THE A TAB IN THE SPREADSHEET CALLED SHEET1##
 ##TABLEAU REJECTS DATA CONNECTIONS EASILY AND DOES NOT LIKE TO REPLACE##
 ##IF A SHEET NAME OTHER THAN LAUS BECOMES NECESSARY THIS ALLOWS FOR THAT##
 
-#sheets_api_key = '57df72284b2e6a72162ca8a4f78a8a161f22243a'
+#Google sheets api removed for public upload
+#sheets_api_key = ''
+
 #Reads json file approving access to google drive, edit file location for sharing
 gc = gspread.service_account(filename='dashboard_data_google_drive_access_info.json')
 
@@ -107,5 +105,6 @@ spreadsheet1.values_update('Sheet1',
                             )
 
 #Share spreadsheet so that the main email has access, not just editing client/API
-spreadsheet1.share('advancecteconomicdashboard@gmail.com', perm_type = 'user', role = 'writer')
+#Email hidden for public upload.
+spreadsheet1.share('EmailHidden', perm_type = 'user', role = 'writer')
 
