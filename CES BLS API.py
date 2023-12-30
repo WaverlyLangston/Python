@@ -1,9 +1,5 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jul 14 09:06:52 2023
+#Download CT industry employment data from BLS, clean and prepare for use in tableau visualization, export, and update a google sheet.
 
-@author: wlangston
-"""
 import pandas as pd
 import requests
 import json
@@ -42,7 +38,9 @@ seriesdict = dict(zip(seriesid, seriesname))
 
 start_year = '2016'
 end_year = '2023'
-bls_api = 'e4079648c4934efda43df6f591b08c5e'
+
+#BLS API hidden for public upload.  BLS API can be acquired for free on website.
+bls_api = ''
 
 
 data = json.dumps({'seriesid' : seriesid, 'startyear' : start_year, 'endyear' : end_year, 'registrationkey' : bls_api})
@@ -93,26 +91,9 @@ tableau_data.rename(columns=tableau_dict, inplace=True)
 
 tableau_data.to_csv('CES.csv')
 
-# #sheets_api_key = '57df72284b2e6a72162ca8a4f78a8a161f22243a'
-# #Reads json file approving access to google drive, edit file location for sharing
-# gc = gspread.service_account(filename='dashboard_data_google_drive_access_info.json')
+#Google sheets API removed for public upload.
+#sheets_api_key = ''
 
-# #Updates spreadsheeet with csv that was exported.  Easier to update like this and we want the csv anyway.
-# spreadsheet1 = gc.open('LAUS')
-# with open('LAUS.csv', 'r', encoding = 'UTF-8') as file_obj:
-#     content = file_obj.read()
-#     gc.import_csv(spreadsheet1.id, data=content)
-
-# #Share spreadsheet so that the main email has access, not just editing client/API
-# spreadsheet1.share('advancecteconomicdashboard@gmail.com', perm_type = 'user', role = 'writer')
-
-
-
-##THIS IS A METHOD OF UPDATING THE A TAB IN THE SPREADSHEET CALLED SHEET1##
-##TABLEAU REJECTS DATA CONNECTIONS EASILY AND DOES NOT LIKE TO REPLACE##
-##IF A SHEET NAME OTHER THAN LAUS BECOMES NECESSARY THIS ALLOWS FOR THAT##
-
-#sheets_api_key = '57df72284b2e6a72162ca8a4f78a8a161f22243a'
 #Reads json file approving access to google drive, edit file location for sharing
 gc = gspread.service_account(filename='dashboard_data_google_drive_access_info.json')
 
@@ -123,8 +104,5 @@ spreadsheet1.values_update('Sheet1',
                             )
 
 #Share spreadsheet so that the main email has access, not just editing client/API
-spreadsheet1.share('advancecteconomicdashboard@gmail.com', perm_type = 'user', role = 'writer')
-
-
-
-
+#Email hidden for public upload.
+spreadsheet1.share('EmailHidden', perm_type = 'user', role = 'writer')
