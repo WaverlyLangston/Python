@@ -1,4 +1,4 @@
-#Download CT industry employment data from BLS, clean and prepare for use in tableau visualization, export, and update a google sheet.
+#Download industry employment data from BLS, clean and prepare for use in tableau visualization, export, and update a google sheet.
 
 import pandas as pd
 import requests
