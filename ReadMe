@@ -1,7 +1,27 @@
-These files include recent examples of python code used at work.
+These files include recent examples of python code used to facilitate updates of an economic dashboard (tableau visualization).
 
-In general each API connection process is similar but differences exist in the particulars and in the data cleaning/manipulation aftwerwards.  
+Files connecting to BEA and BLS utilize an API while files connected to census use their direct download/file transfer protocol source.
 
-In most of these examples the data formatting and exporting step was done in a particular way for use in a tableau dashboard.
+Data is then cleaned and manipulated for use in tableau visualizations.  Generally that includes reformatting the table, changing units, 
+creating per-capita calculations, or calculating values for changes over different time periods.
 
-Important details for the each file and the projects they supported follow.
+Data is then both exported for use in other analysis and updated in a set of google sheets that serve as the source files for the tableau visualizations.
+
+This python-google sheets-tableau combination was arrived at for several reasons:
+- Automatic updates were originally done in Stata but moving to python allowed us to reduce expensive licenses and is a more widely used language
+- Allows a highly automated update process for the visualizations (intended to be real time) but maintains at least 2 human clicks as safeguard and
+  to confirm that existing economic analysis text is also updated
+- Configuring data updates through google sheets allowed us to maintain easy/automatic data updates in tableau without upgrading from public account.
+
+API keys and other potentially sensitive information has been removed for public upload.
+
+The data grabbed by each file is briefly described below.
+
+BEA GDP.py
+10 years of quarterly GDP data for U.S., Connecticut, Massachusetts, New jersey, New York, Rhode Island
+10 years of quarterly GDP data for Connecticut broken down by industry
+
+Business Formation Statistics.py
+
+
+
