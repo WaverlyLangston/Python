@@ -22,6 +22,32 @@ BEA GDP.py
 10 years of quarterly GDP data for Connecticut broken down by industry
 
 Business Formation Statistics.py
+Monthly seasonally adjusted Business Applications and High Propensity Business Applications for Connecticut and U.S.
+Calculates per capita values and per capita 12 month moving averages for CT and U.S.
+
+CES BLS API.py
+Downloads monthly employment by industry for Connecticut over the last five years
+
+Census_Population_Estimates_Time_Series.py
+State and national annual population estimates from 2010 to 2023
+Imported by other .py files for per capita calculations
+
+JOLTS BLS API.py
+5 years of monthly hires, separations, and job openings levels and rates (including unemployed per job opening ratios) data for Connecticut and U.S.
+
+LAUS BLS API.py
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
